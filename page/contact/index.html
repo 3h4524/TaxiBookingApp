@@ -36,6 +36,32 @@
         .navbar-nav .nav-link {
             font-size: 1rem;
             padding: 8px 15px;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            margin: 0 5px;
+        }
+
+        /* Hover effect cho nav links */
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: var(--dark-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Active link styling */
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            color: var(--dark-gray);
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Focus state */
+        .navbar-nav .nav-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5);
         }
 
         .hero-section {
@@ -269,6 +295,7 @@
                 padding: 6px 10px;
             }
 
+
             .hero-section {
                 padding: 60px 0;
             }
@@ -318,6 +345,10 @@
                 font-size: 8rem !important;
             }
 
+            .display-4{
+                padding: 40px 0px 0px 20px;
+            }
+
             .btn-primary,
             .btn-outline-dark {
                 padding: 8px 15px;
@@ -353,7 +384,58 @@
                 height: 80px;
                 font-size: 2rem;
             }
+
+            .navbar-nav .nav-link {
+                text-align: center;
+                margin: 2px 0;
+                padding: 10px 15px;
+            }
+
+            .navbar-nav .nav-link:hover {
+                transform: none;
+            }
+
         }
+
+        * Collapsed navbar styling */ .navbar-collapse {
+            margin-top: 10px;
+        }
+
+        /* Dropdown styling nếu có */
+        .navbar-nav .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .navbar-nav .dropdown-item {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            color: var(--dark-gray);
+        }
+
+        /* Animation cho nav toggle */
+        .navbar-toggler {
+            border: none;
+            padding: 4px 8px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Custom toggler icon */
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+
 
         @media (max-width: 576px) {
             .navbar-brand {
@@ -415,7 +497,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-taxi"></i> Xe dịch vụ giá rẻgit</a>
+            <a class="navbar-brand" href="#"><i class="fas fa-taxi"></i> Xe dịch vụ giá rẻ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -437,7 +519,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
                     <h1 class="display-4 fw-bold mb-4">Liên Hệ Với <div><span
-                                style="color: var(--dark-yellow);">TaxiVN</span></div>
+                                style="color: var(--dark-yellow);">Xe dịch vụ giá rẻ</span></div>
                     </h1>
                     <p class="lead mb-4">Liên hệ với chúng tôi để được hỗ trợ nhanh chóng. Đội ngũ tài xế sẵn sàng phục
                         vụ bạn 24/7!</p>

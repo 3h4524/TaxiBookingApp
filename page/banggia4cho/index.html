@@ -33,10 +33,38 @@
             color: var(--dark-gray) !important;
         }
 
+        /* CSS cho Navigation Links */
         .navbar-nav .nav-link {
             font-size: 1rem;
             padding: 8px 15px;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            margin: 0 5px;
         }
+
+        /* Hover effect cho nav links */
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: var(--dark-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Active link styling */
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            color: var(--dark-gray);
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Focus state */
+        .navbar-nav .nav-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
 
         .hero-section {
             background: linear-gradient(135deg, #fff 0%, #fff9e6 100%);
@@ -196,6 +224,54 @@
             .section-title {
                 font-size: 1.5rem;
             }
+
+            .navbar-nav .nav-link {
+                text-align: center;
+                margin: 2px 0;
+                padding: 10px 15px;
+            }
+
+            .navbar-nav .nav-link:hover {
+                transform: none;
+            }
+        }
+
+        .navbar-collapse {
+            margin-top: 10px;
+        }
+
+        /* Dropdown styling nếu có */
+        .navbar-nav .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .navbar-nav .dropdown-item {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            color: var(--dark-gray);
+        }
+
+        /* Animation cho nav toggle */
+        .navbar-toggler {
+            border: none;
+            padding: 4px 8px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Custom toggler icon */
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
 
         @media (max-width: 576px) {

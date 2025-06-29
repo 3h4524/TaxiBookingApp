@@ -38,7 +38,34 @@
         .navbar-nav .nav-link {
             font-size: 1rem;
             padding: 8px 15px;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            margin: 0 5px;
         }
+
+        /* Hover effect cho nav links */
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: var(--dark-gray);
+            transform: translateY(-2px);
+        }
+
+        /* Active link styling */
+        .navbar-nav .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            color: var(--dark-gray);
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Focus state */
+        .navbar-nav .nav-link:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
 
         .hero-section {
             background: linear-gradient(135deg, #fff 0%, #fff9e6 100%);
@@ -287,8 +314,23 @@
         }
 
         @media (max-width: 768px) {
+
+            .navbar-nav .nav-link {
+                text-align: center;
+                margin: 2px 0;
+                padding: 10px 15px;
+            }
+
+            .navbar-nav .nav-link:hover {
+                transform: none;
+            }
+
             .hero-section {
                 padding: 40px 0;
+            }
+
+            .display-4{
+                padding: 40px 0px 0px 20px;
             }
 
             .hero-content h1 {
@@ -359,6 +401,45 @@
                 /* Adjust aspect ratio for smaller screens */
             }
         }
+
+        .navbar-collapse {
+            margin-top: 10px;
+        }
+
+        /* Dropdown styling nếu có */
+        .navbar-nav .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+        .navbar-nav .dropdown-item {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            color: var(--dark-gray);
+        }
+
+        /* Animation cho nav toggle */
+        .navbar-toggler {
+            border: none;
+            padding: 4px 8px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Custom toggler icon */
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
 
         @media (max-width: 576px) {
             .navbar-brand {
@@ -436,7 +517,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#" aria-label="TaxiVN Trang chủ"><i class="fas fa-taxi"></i> Xe dịch vụ giá rẻ</a>
+            <a class="navbar-brand" href="#" aria-label="TaxiVN Trang chủ"><i class="fas fa-taxi"></i> Xe dịch vụ giá
+                rẻ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -496,7 +578,7 @@
                                 định kỳ, nội thất sạch sẽ, máy lạnh mát.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-success">Từ 15.000đ/km</span>
-                                <a href="page/banggia4cho/" class="btn btn-primary btn-sm"
+                                <a href="banggia4cho/" class="btn btn-primary btn-sm"
                                     aria-label="Đặt xe 4 chỗ ngay">Xem bảng giá</a>
                             </div>
                         </div>
@@ -511,7 +593,7 @@
                                 rãi, thoải mái cho những chuyến đi dài.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-success">Từ 20.000đ/km</span>
-                                <a href="page/banggia7cho/" class="btn btn-primary btn-sm"
+                                <a href="banggia7cho/" class="btn btn-primary btn-sm"
                                     aria-label="Đặt xe 7 chỗ ngay">Xem bảng giá</a>
                             </div>
                         </div>
@@ -528,7 +610,7 @@
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-success">Từ 25.000đ/km</span>
-                                <a href="page/banggia16cho/" class="btn btn-primary btn-sm"
+                                <a href="banggia16cho/" class="btn btn-primary btn-sm"
                                     aria-label="Đặt xe 16 chỗ ngay">Xem bảng giá</a>
                             </div>
                         </div>
