@@ -294,17 +294,33 @@
 
 <body>
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../"><i class="fas fa-taxi"> </i> Xe dịch vụ giá rẻ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="../" aria-label="TaxiVN Trang chủ"><i class="fas fa-taxi"></i> Xe dịch vụ giá
+                rẻ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#pricing">Bảng giá</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contact/">Đặt xe</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../" aria-label="Trang chủ">Trang chủ</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="../banggia4cho/" id="pricingDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Bảng giá">
+                            Bảng giá
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="pricingDropdown">
+                            <li><a class="dropdown-item" href="../banggia4cho/" aria-label="Bảng giá xe 4 chỗ">Bảng giá
+                                    xe 4 chỗ</a></li>
+                            <li><a class="dropdown-item" href="../banggia7cho/" aria-label="Bảng giá xe 7 chỗ">Bảng giá
+                                    xe 7 chỗ</a></li>
+                            <li><a class="dropdown-item" href="../banggia16cho/" aria-label="Bảng giá xe 16 chỗ">Bảng
+                                    giá xe 16 chỗ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../contact/" aria-label="Đặt xe">Đặt xe</a></li>
                 </ul>
             </div>
         </div>

@@ -295,7 +295,6 @@
                 padding: 6px 10px;
             }
 
-
             .hero-section {
                 padding: 60px 0;
             }
@@ -345,7 +344,7 @@
                 font-size: 8rem !important;
             }
 
-            .display-4{
+            .display-4 {
                 padding: 40px 0px 0px 20px;
             }
 
@@ -394,14 +393,13 @@
             .navbar-nav .nav-link:hover {
                 transform: none;
             }
-
         }
 
-        * Collapsed navbar styling */ .navbar-collapse {
+        .navbar-collapse {
             margin-top: 10px;
         }
 
-        /* Dropdown styling nếu có */
+        /* Dropdown styling */
         .navbar-nav .dropdown-menu {
             border: none;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -434,8 +432,6 @@
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
         }
-
-
 
         @media (max-width: 576px) {
             .navbar-brand {
@@ -497,17 +493,33 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="../"><i class="fas fa-taxi"></i> Xe dịch vụ giá rẻ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="../" aria-label="TaxiVN Trang chủ"><i class="fas fa-taxi"></i> Xe dịch vụ giá
+                rẻ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="../">Trang chủ</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="../banggia4cho/">Bảng giá</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../contact/">Đặt xe</a></li>
-                    </ul>
+                    <li class="nav-item"><a class="nav-link" href="../" aria-label="Trang chủ">Trang chủ</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="../banggia4cho/" id="pricingDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Bảng giá">
+                            Bảng giá
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="pricingDropdown">
+                            <li><a class="dropdown-item" href="../banggia4cho/" aria-label="Bảng giá xe 4 chỗ">Bảng giá
+                                    xe
+                                    4 chỗ</a></li>
+                            <li><a class="dropdown-item" href="../banggia7cho/" aria-label="Bảng giá xe 7 chỗ">Bảng giá
+                                    xe
+                                    7 chỗ</a></li>
+                            <li><a class="dropdown-item" href="../banggia16cho/" aria-label="Bảng giá xe 16 chỗ">Bảng
+                                    giá
+                                    xe 16 chỗ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../contact/" aria-label="Đặt xe">Đặt xe</a></li>
                 </ul>
             </div>
         </div>
@@ -518,16 +530,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <h1 class="display-4 fw-bold mb-4">Liên Hệ Với <div><span
-                                style="color: var(--dark-yellow);">Xe dịch vụ giá rẻ</span></div>
+                    <h1 class="display-4 fw-bold mb-4">Liên Hệ Với <div><span style="color: var(--dark-yellow);">Xe dịch
+                                vụ giá rẻ</span></div>
                     </h1>
                     <p class="lead mb-4">Liên hệ với chúng tôi để được hỗ trợ nhanh chóng. Đội ngũ tài xế sẵn sàng phục
                         vụ bạn 24/7!</p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#driver-info" class="btn btn-primary btn-lg">
+                        <a href="#driver-info" class="btn btn-primary btn-lg" aria-label="Thông tin tài xế">
                             <i class="fas fa-user"></i> Thông tin tài xế
                         </a>
-                        <a href="#booking-form" class="btn btn-outline-dark btn-lg">
+                        <a href="#booking-form" class="btn btn-outline-dark btn-lg" aria-label="Đặt xe ngay">
                             <i class="fas fa-car"></i> Đặt xe ngay
                         </a>
                     </div>
@@ -562,13 +574,11 @@
                             <i class="fas fa-star"></i>
                             <span class="ms-2 text-muted">(4.9/5 - 127 đánh giá)</span>
                         </div>
-
                         <div class="mb-3">
                             <span class="service-badge">Tài xế chuyên nghiệp</span>
                             <span class="service-badge">Phục vụ 24/7</span>
                             <span class="service-badge">5 năm kinh nghiệm</span>
                         </div>
-
                         <div class="row text-center mb-4">
                             <div class="col-4">
                                 <div class="stats-card">
@@ -589,7 +599,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="text-start">
                             <p><i class="fas fa-car me-2 text-warning"></i> <strong>Loại xe:</strong> Xe 7 chỗ, xe 4 chỗ
                             </p>
@@ -602,12 +611,10 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Contact Information -->
                 <div class="col-lg-6 mb-4">
                     <div class="info-card">
                         <h4 class="fw-bold mb-4 text-center">Thông Tin Liên Hệ</h4>
-
                         <div class="contact-info-item">
                             <i class="fas fa-phone"></i>
                             <div class="ms-3">
@@ -615,15 +622,13 @@
                                 <span class="text-muted">0935456084</span>
                             </div>
                         </div>
-
                         <div class="contact-info-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="ms-3">
                                 <strong>Địa chỉ hiện tại</strong><br>
-                                <span class="text-muted">12 Cồn Tập 2, Bến Trễ, Cẩm Hà, thành phố Hội An</span>
+                                <span class="text-muted">12 Cồn Tập 2, Bến Trẽ, Cẩm Hà, thành phố Hội An</span>
                             </div>
                         </div>
-
                         <div class="contact-info-item">
                             <i class="fas fa-clock"></i>
                             <div class="ms-3">
@@ -631,7 +636,6 @@
                                 <span class="text-muted">24/7 - Sẵn sàng phục vụ</span>
                             </div>
                         </div>
-
                         <div class="contact-info-item">
                             <i class="fas fa-route"></i>
                             <div class="ms-3">
@@ -639,7 +643,6 @@
                                 <span class="text-muted">TP. Đà Nẵng và các tỉnh lân cận</span>
                             </div>
                         </div>
-
                         <div class="contact-info-item">
                             <i class="fas fa-money-bill-wave"></i>
                             <div class="ms-3">
@@ -647,7 +650,6 @@
                                 <span class="text-muted">Tiền mặt, Chuyển khoản, QR Code</span>
                             </div>
                         </div>
-
                         <div class="mt-4 p-3 bg-light rounded">
                             <h6 class="fw-bold mb-2"><i class="fas fa-star text-warning me-2"></i>Cam kết chất lượng
                             </h6>
@@ -678,27 +680,26 @@
                         <form id="bookingForm" class="compact-form">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Họ và tên *</label>
+                                    <label class="form-label fw-bold" for="customerName">Họ và tên *</label>
                                     <input type="text" class="form-control" id="customerName" required>
                                     <div class="invalid-feedback">Vui lòng nhập họ tên của bạn.</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Số điện thoại *</label>
+                                    <label class="form-label fw-bold" for="customerPhone">Số điện thoại *</label>
                                     <input type="tel" class="form-control" id="customerPhone" required
                                         pattern="[0-9]{10,11}">
                                     <div class="invalid-feedback">Vui lòng nhập số điện thoại hợp lệ (10-11 số).</div>
                                 </div>
                             </div>
-
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Email *</label>
+                                    <label class="form-label fw-bold" for="customerEmail">Email *</label>
                                     <input type="email" class="form-control" id="customerEmail" required>
-                                    <div class="invalid-feedback">Vui lòng nhập email hợp lệ (abc@gmail.com).</div>
+                                    <div class="invalid-feedback">Vui lòng nhập email hợp lệ (ví dụ: ten@domain.com).
+                                    </div>
                                 </div>
-
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Loại xe</label>
+                                    <label class="form-label fw-bold" for="carType">Loại xe</label>
                                     <select class="form-control" id="carType">
                                         <option value="4seat">Xe 4 chỗ</option>
                                         <option value="7seat">Xe 7 chỗ</option>
@@ -706,11 +707,9 @@
                                     </select>
                                 </div>
                             </div>
-
-
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Điểm đón *</label>
+                                    <label class="form-label fw-bold" for="pickupLocation">Điểm đón *</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="pickupLocation" required
                                             placeholder="Nhập điểm đón...">
@@ -719,7 +718,7 @@
                                     <div class="invalid-feedback">Vui lòng nhập điểm đón.</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Điểm đến *</label>
+                                    <label class="form-label fw-bold" for="destination">Điểm đến *</label>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="destination" required
                                             placeholder="Nhập điểm đến...">
@@ -728,32 +727,36 @@
                                     <div class="invalid-feedback">Vui lòng nhập điểm đến.</div>
                                 </div>
                             </div>
-
-
+                            <div class="row" id="flightCodeRow" style="display: none;">
+                                <div class="col-12">
+                                    <label class="form-label fw-bold" for="flightCode">Mã chuyến bay</label>
+                                    <input type="text" class="form-control" id="flightCode"
+                                        placeholder="Nhập mã chuyến bay...">
+                                    <div class="invalid-feedback">Vui lòng nhập mã chuyến bay.</div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Ngày *</label>
+                                    <label class="form-label fw-bold" for="bookingDate">Ngày *</label>
                                     <input type="date" class="form-control" id="bookingDate" required>
                                     <div class="invalid-feedback">Vui lòng chọn ngày.</div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-bold">Giờ *</label>
+                                    <label class="form-label fw-bold" for="bookingTime">Giờ *</label>
                                     <input type="time" class="form-control" id="bookingTime" required>
                                     <div class="invalid-feedback">Vui lòng chọn giờ.</div>
                                 </div>
                             </div>
-
-
                             <div class="row">
                                 <div class="col-12">
-                                    <label class="form-label fw-bold">Ghi chú</label>
+                                    <label class="form-label fw-bold" for="customerNotes">Ghi chú</label>
                                     <textarea class="form-control" id="customerNotes" rows="3"
                                         placeholder="Nhập ghi chú thêm (nếu có)..."></textarea>
                                 </div>
                             </div>
-
                             <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-primary btn-lg px-5">
+                                <button type="submit" class="btn btn-primary btn-lg px-5"
+                                    aria-label="Gửi yêu cầu đặt xe">
                                     <i class="fas fa-paper-plane"></i> Gửi yêu cầu đặt xe
                                 </button>
                             </div>
@@ -774,8 +777,7 @@
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7674.210292085981!2d108.31097900727495!3d15.903561452248757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31420ff0e8442691%3A0x2bafc91fc43e0a20!2zROG7i2NoIFbhu6UgVuG6rW4gVOG6o2kgVsOgIER1IEzhu4tjaCBI4buZaSBBbiAtIMSQw6AgTuG6tW5nIEdpw6EgUuG6uw!5e0!3m2!1sen!2s!4v1751179736143!5m2!1sen!2s"
                         width="100%" height="450"
                         style="border:0; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);"
-                        allowfullscreen="" loading="lazy">
-                    </iframe>
+                        allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -882,6 +884,7 @@
 
                 input.addEventListener('input', function () {
                     fetchSuggestions(this.value.trim());
+                    toggleFlightCodeField();
                 });
 
                 input.addEventListener('blur', function () {
@@ -903,6 +906,19 @@
                 });
             }
 
+            // Function to toggle flight code field visibility
+            function toggleFlightCodeField() {
+                const pickupLocation = document.getElementById('pickupLocation').value.trim().toLowerCase();
+                const destination = document.getElementById('destination').value.trim().toLowerCase();
+                const flightCodeRow = document.getElementById('flightCodeRow');
+                if (pickupLocation.includes('sân bay') || destination.includes('sân bay')) {
+                    flightCodeRow.style.display = 'block';
+                } else {
+                    flightCodeRow.style.display = 'none';
+                    document.getElementById('flightCode').value = ''; // Clear flight code if hidden
+                }
+            }
+
             function selectLocation(inputId, location, suggestionsId, placeId) {
                 const input = document.getElementById(inputId);
                 const suggestions = document.getElementById(suggestionsId);
@@ -910,7 +926,25 @@
                 suggestions.style.display = 'none';
                 input.dispatchEvent(new Event('input', { bubbles: true }));
                 input.dispatchEvent(new Event('change', { bubbles: true }));
-                input.focus();
+
+                toggleFlightCodeField();
+
+                // Focus on next field
+                const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime', 'customerNotes'];
+                const currentIndex = fieldOrder.indexOf(inputId);
+                if (currentIndex < fieldOrder.length - 1) {
+                    const nextFieldId = fieldOrder[currentIndex + 1];
+                    const nextField = document.getElementById(nextFieldId);
+                    if (nextField && (nextFieldId !== 'flightCode' || document.getElementById('flightCodeRow').style.display !== 'none')) {
+                        nextField.focus();
+                    } else if (nextFieldId === 'flightCode' && document.getElementById('flightCodeRow').style.display === 'none') {
+                        // Skip flightCode if not visible
+                        const nextNonFlightField = document.getElementById(fieldOrder[currentIndex + 2]);
+                        if (nextNonFlightField) {
+                            nextNonFlightField.focus();
+                        }
+                    }
+                }
 
                 if (placeId) {
                     fetch(`https://rsapi.goong.io/Place/Detail?place_id=${placeId}&api_key=${GOONG_API_KEY}`)
@@ -939,7 +973,7 @@
             setupLocationSuggestions('pickupLocation', 'pickupSuggestions');
             setupLocationSuggestions('destination', 'destinationSuggestions');
 
-            // Booking Form Submission
+            // Validation function for each field
             function validateField(fieldId) {
                 const input = document.getElementById(fieldId);
                 const value = input.value.trim();
@@ -1014,6 +1048,22 @@
                     }
                 }
 
+                if (fieldId === 'flightCode') {
+                    const flightCodeRow = document.getElementById('flightCodeRow');
+                    if (flightCodeRow.style.display !== 'none' && !value) {
+                        input.classList.add('is-invalid');
+                        input.classList.remove('is-valid');
+                        if (feedbackElement) {
+                            feedbackElement.textContent = 'Vui lòng nhập mã chuyến bay.';
+                        }
+                        return false;
+                    } else {
+                        input.classList.remove('is-invalid');
+                        input.classList.add('is-valid');
+                        return true;
+                    }
+                }
+
                 if (fieldId === 'bookingDate') {
                     const today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -1078,41 +1128,43 @@
             }
 
             // Add keypress event listeners for validation
-            ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime'].forEach(fieldId => {
+            ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime'].forEach(fieldId => {
                 const input = document.getElementById(fieldId);
+                if (input) {
+                    input.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleValidationAndFocus(fieldId);
+                        }
+                    });
 
-                // Check khi nhấn Enter
-                input.addEventListener('keypress', function (e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        handleValidationAndFocus(fieldId);
-                    }
-                });
-
-                // Check khi thoát khỏi field (blur)
-                input.addEventListener('blur', function () {
-                    validateField(fieldId); // Chỉ check, không chuyển focus
-                });
+                    input.addEventListener('blur', function () {
+                        validateField(fieldId);
+                    });
+                }
             });
 
             // Hàm xử lý logic chung khi Enter
             function handleValidationAndFocus(fieldId) {
                 const isValid = validateField(fieldId);
                 if (isValid) {
-                    const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime', 'customerNotes'];
+                    const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime', 'customerNotes'];
                     const currentIndex = fieldOrder.indexOf(fieldId);
                     if (currentIndex < fieldOrder.length - 1) {
-                        const nextField = document.getElementById(fieldOrder[currentIndex + 1]);
-                        if (nextField) {
+                        const nextFieldId = fieldOrder[currentIndex + 1];
+                        const nextField = document.getElementById(nextFieldId);
+                        if (nextField && (nextFieldId !== 'flightCode' || document.getElementById('flightCodeRow').style.display !== 'none')) {
                             nextField.focus();
+                        } else if (nextFieldId === 'flightCode' && document.getElementById('flightCodeRow').style.display === 'none') {
+                            // Skip flightCode if not visible
+                            const nextNonFlightField = document.getElementById(fieldOrder[currentIndex + 2]);
+                            if (nextNonFlightField) {
+                                nextNonFlightField.focus();
+                            }
                         }
                     }
                 } else {
-                    showAlert(
-                        'error',
-                        'Lỗi nhập liệu',
-                        document.getElementById(fieldId).parentElement.querySelector('.invalid-feedback').textContent
-                    );
+                    showAlert('error', 'Lỗi nhập liệu', document.getElementById(fieldId).parentElement.querySelector('.invalid-feedback').textContent);
                 }
             }
 
@@ -1136,6 +1188,7 @@
                     customerPhone: document.getElementById('customerPhone').value.trim(),
                     pickupLocation: document.getElementById('pickupLocation').value.trim(),
                     destination: document.getElementById('destination').value.trim(),
+                    flightCode: document.getElementById('flightCode').value.trim(),
                     bookingDate: document.getElementById('bookingDate').value,
                     bookingTime: document.getElementById('bookingTime').value,
                     carType: document.getElementById('carType').value,
@@ -1143,7 +1196,7 @@
                 };
 
                 // Validate all fields
-                const fieldsToValidate = ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime'];
+                const fieldsToValidate = ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime'];
                 for (const fieldId of fieldsToValidate) {
                     if (!validateField(fieldId)) {
                         showAlert('error', 'Lỗi nhập liệu', document.getElementById(fieldId).parentElement.querySelector('.invalid-feedback').textContent);
@@ -1166,6 +1219,7 @@
                     customer_phone: formData.customerPhone,
                     pickup_location: formData.pickupLocation,
                     destination: formData.destination,
+                    flight_code: formData.flightCode || 'Không có mã chuyến bay',
                     booking_date: formData.bookingDate,
                     booking_time: formData.bookingTime,
                     car_type: formData.carType === '4seat' ? 'Xe 4 chỗ' : formData.carType === '7seat' ? 'Xe 7 chỗ' : 'Xe 16 chỗ',
@@ -1178,6 +1232,7 @@
                     customer_phone: formData.customerPhone,
                     pickup_location: formData.pickupLocation,
                     destination: formData.destination,
+                    flight_code: formData.flightCode || 'Không có mã chuyến bay',
                     booking_date: formData.bookingDate,
                     booking_time: formData.bookingTime,
                     car_type: formData.carType === '4seat' ? 'Xe 4 chỗ' : formData.carType === '7seat' ? 'Xe 7 chỗ' : 'Xe 16 chỗ',
@@ -1200,6 +1255,7 @@
 
                         setTimeout(() => {
                             document.getElementById('bookingForm').reset();
+                            document.getElementById('flightCodeRow').style.display = 'none';
                             document.getElementById('bookingForm').classList.remove('was-validated');
                             document.querySelectorAll('.form-control').forEach(input => {
                                 input.parentElement.classList.remove('focused');
@@ -1244,7 +1300,7 @@
                         <i class="${alertIcon}"></i>
                         <strong>${title}</strong><br>
                         ${message}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Đóng thông báo"></button>
                     </div>
                 `;
                 document.body.insertAdjacentHTML('beforeend', alertHtml);
@@ -1297,15 +1353,6 @@
                         this.parentElement.classList.remove('focused');
                     }
                 });
-            });
-
-            // Phone number formatting
-            document.getElementById('customerPhone').addEventListener('input', function (e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 11) {
-                    value = value.slice(0, 11);
-                }
-                e.target.value = value;
             });
 
             // Add loading animation to CTA buttons

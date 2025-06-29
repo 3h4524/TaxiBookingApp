@@ -78,7 +78,6 @@
             box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5);
         }
 
-
         .hero-section {
             background: linear-gradient(135deg, #fff 0%, #fff9e6 100%);
             padding: 80px 0;
@@ -538,10 +537,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../" aria-label="Trang chủ">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/banggia4cho/" aria-label="Bảng giá">Bảng
-                            giá</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact/" aria-label="Đặt xe">Đặt xe</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/banggia4cho/" id="pricingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Bảng giá">
+                            Bảng giá
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="pricingDropdown">
+                            <li><a class="dropdown-item" href="/banggia4cho/" aria-label="Bảng giá xe 4 chỗ">Bảng giá xe 4 chỗ</a></li>
+                            <li><a class="dropdown-item" href="/banggia7cho/" aria-label="Bảng giá xe 7 chỗ">Bảng giá xe 7 chỗ</a></li>
+                            <li><a class="dropdown-item" href="/banggia16cho/" aria-label="Bảng giá xe 16 chỗ">Bảng giá xe 16 chỗ</a></li>
+                        </ul>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="/contact/" aria-label="Đặt xe">Đặt xe</a></li>
                 </ul>
             </div>
         </div>
@@ -731,6 +737,14 @@
                                         <div class="location-suggestions" id="destinationSuggestions"></div>
                                     </div>
                                     <div class="invalid-feedback">Vui lòng nhập điểm đến.</div>
+                                </div>
+                            </div>
+
+                            <div class="row" id="flightCodeRow" style="display: none;">
+                                <div class="col-12">
+                                    <label class="form-label fw-bold" for="flightCode">Mã chuyến bay</label>
+                                    <input type="text" class="form-control" id="flightCode" placeholder="Nhập mã chuyến bay...">
+                                    <div class="invalid-feedback">Vui lòng nhập mã chuyến bay.</div>
                                 </div>
                             </div>
 
@@ -926,6 +940,7 @@
 
                 input.addEventListener('input', function () {
                     fetchSuggestions(this.value.trim());
+                    toggleFlightCodeField();
                 });
 
                 input.addEventListener('blur', function () {
@@ -957,13 +972,22 @@
                 input.dispatchEvent(new Event('input', { bubbles: true }));
                 input.dispatchEvent(new Event('change', { bubbles: true }));
 
+                toggleFlightCodeField();
+
                 // Focus on next field
-                const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime', 'customerNotes'];
+                const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime', 'customerNotes'];
                 const currentIndex = fieldOrder.indexOf(inputId);
                 if (currentIndex < fieldOrder.length - 1) {
-                    const nextField = document.getElementById(fieldOrder[currentIndex + 1]);
-                    if (nextField) {
+                    const nextFieldId = fieldOrder[currentIndex + 1];
+                    const nextField = document.getElementById(nextFieldId);
+                    if (nextField && (nextFieldId !== 'flightCode' || document.getElementById('flightCodeRow').style.display !== 'none')) {
                         nextField.focus();
+                    } else if (nextFieldId === 'flightCode' && document.getElementById('flightCodeRow').style.display === 'none') {
+                        // Skip flightCode if not visible
+                        const nextNonFlightField = document.getElementById(fieldOrder[currentIndex + 2]);
+                        if (nextNonFlightField) {
+                            nextNonFlightField.focus();
+                        }
                     }
                 }
 
@@ -992,6 +1016,19 @@
                     } catch (error) {
                         console.error('Goong Maps Detail API Error:', error);
                     }
+                }
+            }
+
+            // Function to toggle flight code field visibility
+            function toggleFlightCodeField() {
+                const pickupLocation = document.getElementById('pickupLocation').value.trim().toLowerCase();
+                const destination = document.getElementById('destination').value.trim().toLowerCase();
+                const flightCodeRow = document.getElementById('flightCodeRow');
+                if (pickupLocation.includes('sân bay') || destination.includes('sân bay')) {
+                    flightCodeRow.style.display = 'block';
+                } else {
+                    flightCodeRow.style.display = 'none';
+                    document.getElementById('flightCode').value = ''; // Clear flight code if hidden
                 }
             }
 
@@ -1073,6 +1110,22 @@
                     }
                 }
 
+                if (fieldId === 'flightCode') {
+                    const flightCodeRow = document.getElementById('flightCodeRow');
+                    if (flightCodeRow.style.display !== 'none' && !value) {
+                        input.classList.add('is-invalid');
+                        input.classList.remove('is-valid');
+                        if (feedbackElement) {
+                            feedbackElement.textContent = 'Vui lòng nhập mã chuyến bay.';
+                        }
+                        return false;
+                    } else {
+                        input.classList.remove('is-invalid');
+                        input.classList.add('is-valid');
+                        return true;
+                    }
+                }
+
                 if (fieldId === 'bookingDate') {
                     const today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -1137,33 +1190,41 @@
             }
 
             // Add keypress event listeners for validation
-            ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime'].forEach(fieldId => {
+            ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime'].forEach(fieldId => {
                 const input = document.getElementById(fieldId);
+                if (input) {
+                    // Check khi nhấn Enter
+                    input.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            handleValidationAndFocus(fieldId);
+                        }
+                    });
 
-                // Check khi nhấn Enter
-                input.addEventListener('keypress', function (e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        handleValidationAndFocus(fieldId);
-                    }
-                });
-
-                // Check khi thoát khỏi field (blur)
-                input.addEventListener('blur', function () {
-                    validateField(fieldId); // Chỉ check, không chuyển focus
-                });
+                    // Check khi thoát khỏi field (blur)
+                    input.addEventListener('blur', function () {
+                        validateField(fieldId); // Chỉ check, không chuyển focus
+                    });
+                }
             });
 
             // Hàm xử lý logic chung khi Enter
             function handleValidationAndFocus(fieldId) {
                 const isValid = validateField(fieldId);
                 if (isValid) {
-                    const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime', 'customerNotes'];
+                    const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime', 'customerNotes'];
                     const currentIndex = fieldOrder.indexOf(fieldId);
                     if (currentIndex < fieldOrder.length - 1) {
-                        const nextField = document.getElementById(fieldOrder[currentIndex + 1]);
-                        if (nextField) {
+                        const nextFieldId = fieldOrder[currentIndex + 1];
+                        const nextField = document.getElementById(nextFieldId);
+                        if (nextField && (nextFieldId !== 'flightCode' || document.getElementById('flightCodeRow').style.display !== 'none')) {
                             nextField.focus();
+                        } else if (nextFieldId === 'flightCode' && document.getElementById('flightCodeRow').style.display === 'none') {
+                            // Skip flightCode if not visible
+                            const nextNonFlightField = document.getElementById(fieldOrder[currentIndex + 2]);
+                            if (nextNonFlightField) {
+                                nextNonFlightField.focus();
+                            }
                         }
                     }
                 } else {
@@ -1195,6 +1256,7 @@
                     customerPhone: document.getElementById('customerPhone').value.trim(),
                     pickupLocation: document.getElementById('pickupLocation').value.trim(),
                     destination: document.getElementById('destination').value.trim(),
+                    flightCode: document.getElementById('flightCode').value.trim(),
                     bookingDate: document.getElementById('bookingDate').value,
                     bookingTime: document.getElementById('bookingTime').value,
                     carType: document.getElementById('carType').value,
@@ -1202,7 +1264,7 @@
                 };
 
                 // Validate all fields
-                const fieldsToValidate = ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'bookingDate', 'bookingTime'];
+                const fieldsToValidate = ['customerName', 'customerPhone', 'customerEmail', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime'];
                 for (const fieldId of fieldsToValidate) {
                     if (!validateField(fieldId)) {
                         showAlert('error', 'Lỗi nhập liệu', document.getElementById(fieldId).parentElement.querySelector('.invalid-feedback').textContent);
@@ -1225,6 +1287,7 @@
                     customer_phone: formData.customerPhone,
                     pickup_location: formData.pickupLocation,
                     destination: formData.destination,
+                    flight_code: formData.flightCode || 'Không có mã chuyến bay',
                     booking_date: formData.bookingDate,
                     booking_time: formData.bookingTime,
                     car_type: formData.carType === '4seat' ? 'Xe 4 chỗ' : formData.carType === '7seat' ? 'Xe 7 chỗ' : 'Xe 16 chỗ',
@@ -1237,6 +1300,7 @@
                     customer_phone: formData.customerPhone,
                     pickup_location: formData.pickupLocation,
                     destination: formData.destination,
+                    flight_code: formData.flightCode || 'Không có mã chuyến bay',
                     booking_date: formData.bookingDate,
                     booking_time: formData.bookingTime,
                     car_type: formData.carType === '4seat' ? 'Xe 4 chỗ' : formData.carType === '7seat' ? 'Xe 7 chỗ' : 'Xe 16 chỗ',
@@ -1259,6 +1323,7 @@
 
                         setTimeout(() => {
                             document.getElementById('bookingForm').reset();
+                            document.getElementById('flightCodeRow').style.display = 'none';
                             document.getElementById('bookingForm').classList.remove('was-validated');
                             document.querySelectorAll('.form-control').forEach(input => {
                                 input.parentElement.classList.remove('focused');
