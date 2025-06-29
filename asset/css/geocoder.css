@@ -1,0 +1,26 @@
+#geocoder {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+.goongjs-ctrl-geocoder {
+    width: 100% !important;
+}
+/* Tăng chiều dài của input */
+.mapboxgl-ctrl-geocoder {
+    width: 100% !important; /* Chiếm toàn bộ chiều rộng */
+    max-width: 700px !important; /* Giới hạn tối đa */
+}
+
+/* Tùy chỉnh input bên trong */
+.mapboxgl-ctrl-geocoder--input {
+    width: 100% !important; /* Input dài tối đa */
+    padding-left: 10px !important; /* Dịch nội dung về bên trái */
+    font-size: 16px; /* Cỡ chữ to hơn */
+    height: 40px; /* Chiều cao của input */
+}
+
+/* Ẩn icon kính lúp */
+.mapboxgl-ctrl-geocoder--icon.mapboxgl-ctrl-geocoder--icon-search {
+    display: none !important;
+}
