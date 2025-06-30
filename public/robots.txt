@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Cho phép truy cập sitemap
+Sitemap: https://xedichvuhoian.com/sitemap.xml
+
+# Chặn truy cập thư mục không cần thiết (nếu có)
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /*.pdf$
+
+# Crawl-delay (tùy chọn)
+Crawl-delay: 1
