@@ -4,7 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaxiVN - Liên Hệ</title>
+
+    <!-- Primary Meta Tags -->
+    <title>Liên Hệ Đặt Xe - Hotline 24/7: 0935.456.084 | YourBrand</title>
+    <meta name="title" content="Liên Hệ Đặt Xe - Hotline 24/7: 0935.456.084">
+    <meta name="description"
+        content="Liên hệ đặt xe dịch vụ 24/7 qua hotline 0935.456.084. Đội ngũ tư vấn nhiệt tình, phục vụ nhanh chóng. Đặt xe ngay để được hỗ trợ tốt nhất!">
+    <meta name="keywords" content="liên hệ đặt xe, hotline xe dịch vụ, số điện thoại đặt xe, tư vấn xe dịch vụ">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xedichvuhoian.com/contact/">
+    <meta property="og:title" content="Liên Hệ Đặt Xe - Hotline 24/7: 0935.456.084">
+    <meta property="og:description"
+        content="Liên hệ đặt xe taxi 24/7 qua hotline 0935.456.084. Đội ngũ tư vấn nhiệt tình, phục vụ nhanh chóng.">
+    <meta property="og:image" content="https://xedichvuhoian.com/image/hinhAnhBackground.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://xedichvuhoian.com/contact/">
+
+    <!-- Contact Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "YourBrand Taxi Service",
+        "telephone": "+84935456084",
+        "email": "info@yourdomain.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Điện Bàn", 
+          "addressRegion": "Quảng Nam",
+          "addressCountry": "VN"
+        }
+      }
+    }
+    </script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
@@ -839,13 +877,15 @@
                 };
             }
 
+            let isSelectingFromSuggestion = false;
+
             // Setup location suggestions
             function setupLocationSuggestions(inputId, suggestionsId) {
                 const input = document.getElementById(inputId);
                 const suggestions = document.getElementById(suggestionsId);
 
                 const fetchSuggestions = debounce(async function (value) {
-                    if (value.length < 2) {
+                    if (isSelectingFromSuggestion || value.length < 2) {
                         suggestions.style.display = 'none';
                         return;
                     }
@@ -883,8 +923,10 @@
                 }, 500);
 
                 input.addEventListener('input', function () {
-                    fetchSuggestions(this.value.trim());
-                    toggleFlightCodeField();
+                    if (!isSelectingFromSuggestion) {
+                        fetchSuggestions(this.value.trim());
+                        toggleFlightCodeField();
+                    }
                 });
 
                 input.addEventListener('blur', function () {
@@ -922,12 +964,17 @@
             function selectLocation(inputId, location, suggestionsId, placeId) {
                 const input = document.getElementById(inputId);
                 const suggestions = document.getElementById(suggestionsId);
+                isSelectingFromSuggestion = true;
                 input.value = location.replace(/"/g, '"');
                 suggestions.style.display = 'none';
                 input.dispatchEvent(new Event('input', { bubbles: true }));
                 input.dispatchEvent(new Event('change', { bubbles: true }));
 
                 toggleFlightCodeField();
+
+                setTimeout(() => {
+                    isSelectingFromSuggestion = false;
+                }, 100)
 
                 // Focus on next field
                 const fieldOrder = ['customerName', 'customerPhone', 'customerEmail', 'carType', 'pickupLocation', 'destination', 'flightCode', 'bookingDate', 'bookingTime', 'customerNotes'];
